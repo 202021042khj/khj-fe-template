@@ -1,8 +1,22 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* shadcn-style neutral tokens (added for ported ui components) */
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #a3a3a3;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
 }
 
 @theme inline {
@@ -10,12 +24,248 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* custom color palette (ported from admin-template src/styles/colors.ts) */
+  --color-primary-main-blue: #476cff;
+  --color-primary-sub-blue-500: #97b5ff;
+  --color-primary-sub-blue-300: #dde6ff;
+  --color-primary-sub-blue-100: #f0f4ff;
+  --color-primary-main-red: #ff4e51;
+  --color-primary-sub-red-500: #ffc4c5;
+  --color-primary-sub-red-100: #ffe1e1;
+  --color-main-purple: #ac47ff;
+  --color-sub-purple: #f8f0ff;
+  --color-pink: #ee00ff;
+  --color-hover: #222943;
+  --color-gray-800: #3e3e3e;
+  --color-gray-700: #6e6e6e;
+  --color-gray-600: #9f9f9f;
+  --color-gray-500: #cfcfcf;
+  --color-gray-400: #d6d6d6;
+  --color-gray-300: #e3e3e3;
+  --color-gray-200: #f3f3f3;
+  --color-gray-100: #fbfbfb;
+  --color-color-727B87: #727b87;
+  --color-color-A3ACB4: #a3acb4;
+  --color-color-D9DBDE: #d9dbde;
+
+  /* custom font sizes (ported from admin-template src/styles/texts.ts) */
+  --text-font-40-500: 40px;
+  --text-font-40-500--line-height: normal;
+  --text-font-40-500--letter-spacing: normal;
+  --text-font-40-500--font-weight: 500;
+
+  --text-font-24-700: 24px;
+  --text-font-24-700--line-height: normal;
+  --text-font-24-700--letter-spacing: normal;
+  --text-font-24-700--font-weight: 700;
+  --text-font-24-600: 24px;
+  --text-font-24-600--line-height: normal;
+  --text-font-24-600--letter-spacing: normal;
+  --text-font-24-600--font-weight: 600;
+  --text-font-24-500: 24px;
+  --text-font-24-500--line-height: normal;
+  --text-font-24-500--letter-spacing: normal;
+  --text-font-24-500--font-weight: 500;
+  --text-font-24-400: 24px;
+  --text-font-24-400--line-height: normal;
+  --text-font-24-400--letter-spacing: normal;
+  --text-font-24-400--font-weight: 400;
+  --text-font-24-300: 24px;
+  --text-font-24-300--line-height: normal;
+  --text-font-24-300--letter-spacing: normal;
+  --text-font-24-300--font-weight: 300;
+
+  --text-font-20-700: 20px;
+  --text-font-20-700--line-height: normal;
+  --text-font-20-700--letter-spacing: normal;
+  --text-font-20-700--font-weight: 700;
+  --text-font-20-600: 20px;
+  --text-font-20-600--line-height: normal;
+  --text-font-20-600--letter-spacing: normal;
+  --text-font-20-600--font-weight: 600;
+  --text-font-20-500: 20px;
+  --text-font-20-500--line-height: normal;
+  --text-font-20-500--letter-spacing: normal;
+  --text-font-20-500--font-weight: 500;
+  --text-font-20-400: 20px;
+  --text-font-20-400--line-height: normal;
+  --text-font-20-400--letter-spacing: normal;
+  --text-font-20-400--font-weight: 400;
+  --text-font-20-300: 20px;
+  --text-font-20-300--line-height: normal;
+  --text-font-20-300--letter-spacing: normal;
+  --text-font-20-300--font-weight: 300;
+
+  --text-font-18-700: 18px;
+  --text-font-18-700--line-height: normal;
+  --text-font-18-700--letter-spacing: normal;
+  --text-font-18-700--font-weight: 700;
+  --text-font-18-600: 18px;
+  --text-font-18-600--line-height: normal;
+  --text-font-18-600--letter-spacing: normal;
+  --text-font-18-600--font-weight: 600;
+  --text-font-18-500: 18px;
+  --text-font-18-500--line-height: normal;
+  --text-font-18-500--letter-spacing: normal;
+  --text-font-18-500--font-weight: 500;
+  --text-font-18-400: 18px;
+  --text-font-18-400--line-height: normal;
+  --text-font-18-400--letter-spacing: normal;
+  --text-font-18-400--font-weight: 400;
+  --text-font-18-300: 18px;
+  --text-font-18-300--line-height: normal;
+  --text-font-18-300--letter-spacing: normal;
+  --text-font-18-300--font-weight: 300;
+
+  --text-font-16-700: 16px;
+  --text-font-16-700--line-height: normal;
+  --text-font-16-700--letter-spacing: normal;
+  --text-font-16-700--font-weight: 700;
+  --text-font-16-600: 16px;
+  --text-font-16-600--line-height: normal;
+  --text-font-16-600--letter-spacing: normal;
+  --text-font-16-600--font-weight: 600;
+  --text-font-16-500: 16px;
+  --text-font-16-500--line-height: normal;
+  --text-font-16-500--letter-spacing: normal;
+  --text-font-16-500--font-weight: 500;
+  --text-font-16-400: 16px;
+  --text-font-16-400--line-height: normal;
+  --text-font-16-400--letter-spacing: normal;
+  --text-font-16-400--font-weight: 400;
+  --text-font-16-300: 16px;
+  --text-font-16-300--line-height: normal;
+  --text-font-16-300--letter-spacing: normal;
+  --text-font-16-300--font-weight: 300;
+
+  --text-font-14-700: 14px;
+  --text-font-14-700--line-height: normal;
+  --text-font-14-700--letter-spacing: normal;
+  --text-font-14-700--font-weight: 700;
+  --text-font-14-600: 14px;
+  --text-font-14-600--line-height: normal;
+  --text-font-14-600--letter-spacing: normal;
+  --text-font-14-600--font-weight: 600;
+  --text-font-14-500: 14px;
+  --text-font-14-500--line-height: normal;
+  --text-font-14-500--letter-spacing: normal;
+  --text-font-14-500--font-weight: 500;
+  --text-font-14-400: 14px;
+  --text-font-14-400--line-height: normal;
+  --text-font-14-400--letter-spacing: normal;
+  --text-font-14-400--font-weight: 400;
+  --text-font-14-300: 14px;
+  --text-font-14-300--line-height: normal;
+  --text-font-14-300--letter-spacing: normal;
+  --text-font-14-300--font-weight: 300;
+
+  --text-font-12-700: 12px;
+  --text-font-12-700--line-height: normal;
+  --text-font-12-700--letter-spacing: normal;
+  --text-font-12-700--font-weight: 700;
+  --text-font-12-600: 12px;
+  --text-font-12-600--line-height: normal;
+  --text-font-12-600--letter-spacing: normal;
+  --text-font-12-600--font-weight: 600;
+  --text-font-12-500: 12px;
+  --text-font-12-500--line-height: normal;
+  --text-font-12-500--letter-spacing: normal;
+  --text-font-12-500--font-weight: 500;
+  --text-font-12-400: 12px;
+  --text-font-12-400--line-height: normal;
+  --text-font-12-400--letter-spacing: normal;
+  --text-font-12-400--font-weight: 400;
+  --text-font-12-300: 12px;
+  --text-font-12-300--line-height: normal;
+  --text-font-12-300--letter-spacing: normal;
+  --text-font-12-300--font-weight: 300;
+
+  --text-font-10-700: 10px;
+  --text-font-10-700--line-height: normal;
+  --text-font-10-700--letter-spacing: normal;
+  --text-font-10-700--font-weight: 700;
+  --text-font-10-600: 10px;
+  --text-font-10-600--line-height: normal;
+  --text-font-10-600--letter-spacing: normal;
+  --text-font-10-600--font-weight: 600;
+  --text-font-10-500: 10px;
+  --text-font-10-500--line-height: normal;
+  --text-font-10-500--letter-spacing: normal;
+  --text-font-10-500--font-weight: 500;
+  --text-font-10-400: 10px;
+  --text-font-10-400--line-height: normal;
+  --text-font-10-400--letter-spacing: normal;
+  --text-font-10-400--font-weight: 400;
+  --text-font-10-300: 10px;
+  --text-font-10-300--line-height: normal;
+  --text-font-10-300--letter-spacing: normal;
+  --text-font-10-300--font-weight: 300;
+
+  /* z-index scale (ported from admin-template tailwind.config.ts) */
+  --z-base: 10;
+  --z-table: 10;
+  --z-footer: 10;
+  --z-middle: 20;
+  --z-header: 20;
+  --z-calendar: 20;
+  --z-serviceTab: 30;
+  --z-modal: 50;
+  --z-tooltip: 50;
+  --z-dialog: 50;
+  --z-dropdown: 50;
+  --z-popover: 50;
+  --z-select: 50;
+  --z-hoverCard: 100;
+  --z-toast: 100;
+
+  /* box shadows (ported from admin-template tailwind.config.ts) */
+  --shadow-notify-success: 0px 2px 8px 0px rgba(164, 192, 255, 0.6);
+  --shadow-notify-error: 0px 2px 8px 0px rgba(255, 100, 103, 0.2);
+  --shadow-pop-over: 0px 0px 4px 0px #cfcfcf;
+  --shadow-pop-over-more: 0px 2px 10px 0px rgba(189, 189, 189, 0.5);
+
+  /* animations (ported from admin-template tailwind.config.ts) */
+  --animate-spin-once: spin-once 1s ease-in-out;
+}
+
+@keyframes spin-once {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --popover: #0a0a0a;
+    --popover-foreground: #fafafa;
+    --primary: #fafafa;
+    --primary-foreground: #171717;
+    --border: #262626;
+    --input: #262626;
+    --ring: #737373;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3;
+    --accent: #262626;
+    --accent-foreground: #fafafa;
   }
 }
 
@@ -23,4 +273,78 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Scrollbar (ported from admin-template src/styles/globals.css) */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb;
+  border-radius: 3px;
+}
+
+/* Popover */
+.popover-content-width-same-as-its-trigger {
+  width: var(--radix-popover-trigger-width);
+  max-height: var(--radix-popover-content-available-height);
+}
+
+/* Toastify (custom overrides for react-toastify, used by Notify) */
+.Toastify__toast-container {
+  width: fit-content;
+}
+.Toastify__toast-container--top-center {
+  top: 73px;
+  align-items: center;
+}
+.Toastify__toast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 100px;
+  width: fit-content;
+  min-height: fit-content;
+  box-shadow: none;
+  padding: 0;
+}
+.Toastify__toast.fade-in {
+  animation: toast-fade-in 0.2s ease-in-out;
+}
+.Toastify__toast.fade-out {
+  animation: toast-fade-out 0.2s ease-in-out;
+}
+.Toastify__toast-theme--light,
+.Toastify__toast-theme--colored.Toastify__toast--default {
+  background-color: transparent;
+}
+
+@media (max-width: 480px) {
+  .Toastify__toast-container {
+    top: 73px;
+    left: 50%;
+    transform: translate(-50%);
+    align-items: center;
+  }
+}
+
+@keyframes toast-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes toast-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
