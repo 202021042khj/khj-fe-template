@@ -21,7 +21,7 @@ export default function PostListSection({ posts }: PostListSectionProps) {
       {posts.map((post) => (
         <Link
           key={post.id}
-          href={`/posts/${post.id}`}
+          href={`/example/${post.id}`}
           className="flex flex-col gap-2 rounded-lg border border-zinc-200 p-4 transition hover:border-indigo-300 hover:shadow-sm"
         >
           <Badge label={post.category} />

@@ -1,10 +1,10 @@
 "use client";
 
 import { usePostsListLogic } from "@/hooks/usePostsListLogic";
-import DesktopPage from "@/components/posts-list/DesktopPage";
-import MobilePage from "@/components/posts-list/MobilePage";
+import DesktopPage from "@/components/pages/example/list/DesktopPage";
+import MobilePage from "@/components/pages/example/list/MobilePage";
 
-export default function Home() {
+export default function ExampleListPage() {
   const logic = usePostsListLogic();
 
   return (

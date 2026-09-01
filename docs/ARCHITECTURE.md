@@ -12,10 +12,10 @@ This convention is inspired by `recruit-khj` (a prior take-home-test project) bu
 
 ## Desktop/Mobile split
 
-Per page-route, create a folder `components/<page-name>/` (kebab-case, matching the route) containing:
+Per page-route, create a folder `components/pages/<page-name>/` (kebab-case, matching the route) containing:
 
 ```
-components/<page-name>/
+components/pages/<page-name>/
 ├── DesktopPage.tsx
 └── MobilePage.tsx
 ```
@@ -48,14 +48,16 @@ Rules:
 
 - **The shared props type is the hook's exported return-type interface** (e.g. `UsePostsListLogicResult`), imported by both `DesktopPage.tsx` and `MobilePage.tsx`. Never redefine it per file.
 
-Worked example: `components/posts-list/` + `hooks/usePostsListLogic.ts`, `components/post-detail/` + `hooks/usePostDetailLogic.ts`.
+When a route has nested children (e.g. `app/example/page.tsx` + `app/example/[id]/page.tsx`), nest their component folders the same way under a shared parent, matching the route tree: `components/pages/example/list/` + `components/pages/example/detail/`.
+
+Worked example: `components/pages/example/list/` + `hooks/usePostsListLogic.ts`, `components/pages/example/detail/` + `hooks/usePostDetailLogic.ts`.
 
 ## Section-based modularization
 
-Per page-route, sections live in `components/<page-name>/sections/`, one file per logical section, PascalCase, suffixed `Section`:
+Per page-route, sections live in `components/pages/<page-name>/sections/`, one file per logical section, PascalCase, suffixed `Section`:
 
 ```
-components/<page-name>/sections/
+components/pages/<page-name>/sections/
 ├── HeaderSection.tsx
 └── ListSection.tsx
 ```
@@ -68,23 +70,25 @@ Worked example:
 
 | Section | Shared or split? | Why |
 |---|---|---|
-| `posts-list/sections/HeaderSection.tsx` | Shared | Only spacing/type-scale differs by breakpoint |
-| `posts-list/sections/PostListSection.tsx` | Shared | Grid column count is the only difference (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`) |
-| `post-detail/sections/ContentSection.tsx` | Shared | Paragraph list, same structure at all sizes |
-| `post-detail/sections/DesktopHeaderSection.tsx` + `MobileHeaderSection.tsx` | Split | Desktop uses a text back-link + breadcrumb-style block; mobile uses a sticky icon app-bar — genuinely different element hierarchy, not just styling |
+| `example/list/sections/HeaderSection.tsx` | Shared | Only spacing/type-scale differs by breakpoint |
+| `example/list/sections/PostListSection.tsx` | Shared | Grid column count is the only difference (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`) |
+| `example/detail/sections/ContentSection.tsx` | Shared | Paragraph list, same structure at all sizes |
+| `example/detail/sections/DesktopHeaderSection.tsx` + `MobileHeaderSection.tsx` | Split | Desktop uses a text back-link + breadcrumb-style block; mobile uses a sticky icon app-bar — genuinely different element hierarchy, not just styling |
 
 ## Naming conventions
 
 - **Components**: PascalCase files (`HeaderSection.tsx`).
 - **Hooks**: camelCase, `use`-prefixed (`usePostsListLogic.ts`), matching the exported hook name.
-- **Page-route component folders**: kebab-case matching the route (`components/posts-list/`, `components/post-detail/`).
+- **Page-route component folders**: kebab-case matching the route, nested under `components/pages/`, mirroring the route tree (`components/pages/main/`, `components/pages/example/list/`, `components/pages/example/detail/`).
 - **No barrel `index.ts` files** anywhere — import directly from the file.
 - **Always use the `@/` alias** (`@/components/...`, `@/hooks/...`) — never relative `../../` imports.
 - **Split-section files are prefixed** `Desktop`/`Mobile` (not suffixed), to visually match `DesktopPage`/`MobilePage`.
 
 ## Shared infra layout
 
+- `components/pages/` — page-route folders (`components/pages/<page-name>/`), one per route; see Desktop/Mobile split above.
 - `components/common/` — shared UI primitives (e.g. `Badge.tsx`), domain-agnostic and reusable across pages.
+- `components/ui/` — design-system primitives (buttons, dialogs, modals, etc.), also domain-agnostic.
 - `hooks/` — flat; page-level hooks (`use<PageName>Logic.ts`) and any future cross-page hooks live together.
 - `types/` — one file per domain concept (`types/post.ts`), not per-page.
 - `constants/` — one file per domain concept holding actual constant data (`constants/posts.ts`), replacing the reference's pattern of inlining constants inside hooks.

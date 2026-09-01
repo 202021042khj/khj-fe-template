@@ -1,5 +1,5 @@
-import HeaderSection from "@/components/posts-list/sections/HeaderSection";
-import PostListSection from "@/components/posts-list/sections/PostListSection";
+import HeaderSection from "@/components/pages/example/list/sections/HeaderSection";
+import PostListSection from "@/components/pages/example/list/sections/PostListSection";
 import type { UsePostsListLogicResult as PostsListPageProps } from "@/hooks/usePostsListLogic";
 
 export default function DesktopPage({

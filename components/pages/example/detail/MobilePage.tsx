@@ -1,5 +1,5 @@
-import MobileHeaderSection from "@/components/post-detail/sections/MobileHeaderSection";
-import ContentSection from "@/components/post-detail/sections/ContentSection";
+import MobileHeaderSection from "@/components/pages/example/detail/sections/MobileHeaderSection";
+import ContentSection from "@/components/pages/example/detail/sections/ContentSection";
 import type { UsePostDetailLogicResult as PostDetailPageProps } from "@/hooks/usePostDetailLogic";
 
 export default function MobilePage({ post }: PostDetailPageProps) {

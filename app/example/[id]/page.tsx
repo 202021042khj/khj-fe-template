@@ -2,8 +2,8 @@
 
 import { use } from "react";
 import { usePostDetailLogic } from "@/hooks/usePostDetailLogic";
-import DesktopPage from "@/components/post-detail/DesktopPage";
-import MobilePage from "@/components/post-detail/MobilePage";
+import DesktopPage from "@/components/pages/example/detail/DesktopPage";
+import MobilePage from "@/components/pages/example/detail/MobilePage";
 
 interface PostDetailRouteProps {
   params: Promise<{ id: string }>;

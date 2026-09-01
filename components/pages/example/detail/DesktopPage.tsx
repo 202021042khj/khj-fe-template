@@ -1,5 +1,5 @@
-import DesktopHeaderSection from "@/components/post-detail/sections/DesktopHeaderSection";
-import ContentSection from "@/components/post-detail/sections/ContentSection";
+import DesktopHeaderSection from "@/components/pages/example/detail/sections/DesktopHeaderSection";
+import ContentSection from "@/components/pages/example/detail/sections/ContentSection";
 import type { UsePostDetailLogicResult as PostDetailPageProps } from "@/hooks/usePostDetailLogic";
 
 export default function DesktopPage({ post }: PostDetailPageProps) {
